@@ -3,20 +3,20 @@ De 4 tests básicos pasamos a 14 tests organizados en grupos con @Nested y @Disp
 
 Las mejoras clave:
 
-# @BeforeEach — elimina la repetición de new PedidoService() en cada test
-# @Nested — agrupa los tests por responsabilidad, más fácil de leer y mantener
-# @DisplayName — nombres descriptivos en lugar de testClienteVIP1, testClienteVIP2, etc.
-# assertEquals(valor, total, 0.001) — tolerancia de precisión para evitar falsos negativos con double
+1. @BeforeEach — elimina la repetición de new PedidoService() en cada test
+2. @Nested — agrupa los tests por responsabilidad, más fácil de leer y mantener
+3. @DisplayName — nombres descriptivos en lugar de testClienteVIP1, testClienteVIP2, etc.
+4. assertEquals(valor, total, 0.001) — tolerancia de precisión para evitar falsos negativos con double
 
 Escenarios nuevos que no existían antes:
 
-# "vip" en minúsculas → confirma que el método es case-sensitive
-# tipoCliente = "" → string vacío no rompe nada
-# tipoCliente = null → documenta el NullPointerException como bug conocido
-# total == 500 exacto → el límite del descuento adicional NO se activa
-# total == 501 → justo por encima, SÍ se activa
-# precio = 0 y cantidad = 0 → casos de valor cero
-# precio con decimales → valida precisión numérica
+1. "vip" en minúsculas → confirma que el método es case-sensitive
+2. tipoCliente = "" → string vacío no rompe nada
+3. tipoCliente = null → documenta el NullPointerException como bug conocido
+4. total == 500 exacto → el límite del descuento adicional NO se activa
+5. total == 501 → justo por encima, SÍ se activa
+6. precio = 0 y cantidad = 0 → casos de valor cero
+7. precio con decimales → valida precisión numérica
 
 El resultado esperado en JaCoCo es pasar de ~60% a ~95%+ de cobertura de branches en PedidoService.
 
